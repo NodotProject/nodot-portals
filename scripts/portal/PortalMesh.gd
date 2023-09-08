@@ -14,7 +14,7 @@ func _ready():
 	if not other_portal_path.is_empty():
 		other_portal = get_node(other_portal_path)
 		
-	portal_camera = PlayerManager.node.get_node("PortalViewport/PortalCamera")
+	portal_camera = PlayerManager.node.get_node("PortalViewports/PortalViewport/PortalCamera")
 	if current:
 		$Inside.visible = true
  
