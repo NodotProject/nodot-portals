@@ -2,7 +2,7 @@
 
 ![](screenshot.png)
 
-This is a simple portal demo for Godot 4.1.1. It simply follows [this youtube tutorial](https://www.youtube.com/watch?v=oqDdIg3BRlg) by [Nobody](https://www.youtube.com/@whosnobody) which is a compounded version of [this tutorial](https://www.youtube.com/watch?v=R1e9sJo7-x0).
+This is a simple portal demo for Godot v4.1.1. It simply follows [this youtube tutorial](https://www.youtube.com/watch?v=oqDdIg3BRlg) by [Nobody](https://www.youtube.com/@whosnobody) which is a compounded version of [this tutorial](https://www.youtube.com/watch?v=R1e9sJo7-x0) by [Magnus Jørgensen](https://www.youtube.com/@Pracedru).
 
 It uses the [Nodot](https://github.com/NodotProject/nodot) first person character controller.
 
