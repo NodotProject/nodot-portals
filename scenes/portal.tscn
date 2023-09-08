@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dos7pr32jx8g7"]
+[gd_scene load_steps=7 format=3 uid="uid://dos7pr32jx8g7"]
 
 [ext_resource type="Script" path="res://scripts/portal/PortalMesh.gd" id="1_3vbu0"]
+[ext_resource type="Script" path="res://scripts/portal/PortalArea.gd" id="2_c5vpn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t376k"]
 shading_mode = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_2r8y7"]
 material = SubResource("StandardMaterial3D_t376k")
+size = Vector3(0.01, 3, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_spq2x"]
+material = SubResource("StandardMaterial3D_t376k")
 flip_faces = true
-size = Vector3(1, 3, 2)
+size = Vector3(0.01, 3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uq0dc"]
+size = Vector3(0.01, 2.9, 1.9)
 
 [node name="PortalMesh" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08521, 1.98199, 0)
 layers = 16
 cast_shadow = 0
 mesh = SubResource("BoxMesh_2r8y7")
@@ -20,8 +27,11 @@ script = ExtResource("1_3vbu0")
 [node name="helper" type="Node3D" parent="."]
 
 [node name="Inside" type="MeshInstance3D" parent="."]
-visible = false
 layers = 16
-cast_shadow = 0
-mesh = SubResource("BoxMesh_2r8y7")
-skeleton = NodePath("../..")
+mesh = SubResource("BoxMesh_spq2x")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_c5vpn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_uq0dc")

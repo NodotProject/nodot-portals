@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckhagqotuxc88"]
+[gd_scene load_steps=12 format=3 uid="uid://ckhagqotuxc88"]
 
 [ext_resource type="PackedScene" uid="uid://cbtm23m4iahx8" path="res://scenes/player.tscn" id="1_br3pv"]
 [ext_resource type="PackedScene" uid="uid://dos7pr32jx8g7" path="res://scenes/portal.tscn" id="2_mfl3p"]
@@ -9,10 +9,28 @@ size = Vector3(100, 1, 100)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sns23"]
 points = PackedVector3Array(50.7837, 1.88095, 50.7837, -50.7837, -1.29365, -50.7837, -50.7837, 1.88095, -50.7837, 50.7837, -1.29365, -50.7837, -50.7837, -1.29365, 50.7837, -50.7837, 1.88095, 50.7837, 50.7837, 1.88095, -50.7837, 50.7837, -1.29365, 50.7837)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1s5ms"]
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_osqjf"]
+material = SubResource("StandardMaterial3D_1s5ms")
 size = Vector3(1, 10, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ni51"]
+size = Vector3(1, 10, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcxdr"]
+albedo_color = Color(0.207843, 0.509804, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hctxa"]
+material = SubResource("StandardMaterial3D_hcxdr")
+size = Vector3(1, 10, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qewdf"]
+albedo_color = Color(0.572549, 0.552941, 0.231373, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hfn7s"]
+material = SubResource("StandardMaterial3D_qewdf")
 size = Vector3(1, 10, 20)
 
 [node name="Map1" type="Node3D"]
@@ -34,19 +52,19 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.6
 shadow_enabled = true
 
 [node name="PortalMesh" parent="." instance=ExtResource("2_mfl3p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08521, 2.03548, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07552, 2.03548, 0)
 current = true
 other_portal_path = NodePath("../PortalMesh2")
 
 [node name="PortalMesh2" parent="." instance=ExtResource("2_mfl3p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3104, 2.02345, 0)
-current = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.935, 2.02345, 0)
 other_portal_path = NodePath("../PortalMesh")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.066, 5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+layers = 17
 mesh = SubResource("BoxMesh_osqjf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
@@ -56,16 +74,18 @@ shape = SubResource("BoxShape3D_0ni51")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
-mesh = SubResource("BoxMesh_osqjf")
+layers = 17
+mesh = SubResource("BoxMesh_hctxa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
 shape = SubResource("BoxShape3D_0ni51")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8879, 5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4"]
-mesh = SubResource("BoxMesh_osqjf")
+layers = 17
+mesh = SubResource("BoxMesh_hfn7s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
 shape = SubResource("BoxShape3D_0ni51")
