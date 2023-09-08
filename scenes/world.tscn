@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq1e4jfe4hwu2"]
+
+[ext_resource type="Script" path="res://addons/nodot/menus/MenuManager.gd" id="3_20uux"]
+[ext_resource type="PackedScene" uid="uid://kwbgl8vks38r" path="res://scenes/menus/main_menu.tscn" id="3_j0w2p"]
+[ext_resource type="PackedScene" uid="uid://bigmdsd7jk3kv" path="res://addons/nodot/scenes/menus/multiplayer_menu.tscn" id="4_tvt7n"]
+[ext_resource type="PackedScene" uid="uid://dj1v33w5ffysa" path="res://addons/nodot/scenes/menus/options_menu.tscn" id="5_viauo"]
+[ext_resource type="PackedScene" uid="uid://clvaldaec2uum" path="res://addons/nodot/scenes/menus/pause_menu.tscn" id="6_qxalc"]
+
+[sub_resource type="Environment" id="Environment_esnkh"]
+sdfgi_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_esnkh")
+
+[node name="MenuManager" type="Node2D" parent="."]
+script = ExtResource("3_20uux")
+active_menu = "MainMenuContainer"
+
+[node name="MainMenuContainer" parent="MenuManager" instance=ExtResource("3_j0w2p")]
+
+[node name="MultiplayerMenuContainer" parent="MenuManager" instance=ExtResource("4_tvt7n")]
+visible = false
+
+[node name="OptionsMenuContainer" parent="MenuManager" instance=ExtResource("5_viauo")]
+visible = false
+
+[node name="PauseMenuContainer" parent="MenuManager" instance=ExtResource("6_qxalc")]
+visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://n2o5lnxaq1tx"]
+[gd_scene load_steps=7 format=3 uid="uid://kwbgl8vks38r"]
 
 [ext_resource type="Script" path="res://addons/nodot/menus/MenuContainer.gd" id="1_17ji3"]
 [ext_resource type="Script" path="res://addons/nodot/utility/WindowSizeConnector.gd" id="2_xus4v"]
@@ -78,6 +78,7 @@ layout_mode = 2
 text = "Start Game"
 script = SubResource("GDScript_ymbmu")
 menu_container = NodePath("../../../..")
+first_scene_path = "res://maps/map1.tscn"
 
 [node name="MultiplayerButton" type="Button" parent="Control/CenterContainer/VBoxContainer" node_paths=PackedStringArray("menu_container")]
 layout_mode = 2

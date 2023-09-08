@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://cbtm23m4iahx8"]
+
+[ext_resource type="Script" path="res://addons/nodot/kits/FirstPerson/FirstPersonCharacter.gd" id="1_xa5rd"]
+[ext_resource type="Script" path="res://addons/nodot/kits/Locomotion3D/CharacterMover3D.gd" id="2_reah0"]
+[ext_resource type="Script" path="res://addons/nodot/kits/FirstPerson/FirstPersonMouseInput.gd" id="3_n16b1"]
+[ext_resource type="Shader" path="res://assets/shaders/stencil_shader.gdshader" id="4_bb845"]
+[ext_resource type="Script" path="res://scripts/portal/StencilCamera.gd" id="4_ffkeo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jud3q"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3nqf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ifuuq"]
+material = SubResource("StandardMaterial3D_d3nqf")
+
+[sub_resource type="Environment" id="Environment_f5f5h"]
+background_mode = 1
+background_energy_multiplier = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ga7m3"]
+viewport_path = NodePath("StencilViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hkpy"]
+resource_local_to_scene = true
+shader = ExtResource("4_bb845")
+shader_parameter/stencil_tex = SubResource("ViewportTexture_ga7m3")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_007l4"]
+viewport_path = NodePath("PortalViewport")
+
+[node name="FirstPersonCharacter" type="CharacterBody3D"]
+script = ExtResource("1_xa5rd")
+is_current_player = true
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.801211, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="CharacterMover3D" type="Node" parent="."]
+script = ExtResource("2_reah0")
+
+[node name="FirstPersonMouseInput" type="Node" parent="."]
+script = ExtResource("3_n16b1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jud3q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ifuuq")
+
+[node name="StencilViewport" type="SubViewport" parent="."]
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="StencilCamera" type="Camera3D" parent="StencilViewport"]
+cull_mask = 16
+environment = SubResource("Environment_f5f5h")
+script = ExtResource("4_ffkeo")
+main_cam_path = NodePath("../../Head/Camera3D")
+
+[node name="PortalViewport" type="SubViewport" parent="."]
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="PortalCamera" type="Camera3D" parent="PortalViewport"]
+cull_mask = 1048559
+current = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_6hkpy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_007l4")
