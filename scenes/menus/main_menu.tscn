@@ -81,6 +81,7 @@ menu_container = NodePath("../../../..")
 first_scene_path = "res://maps/map1.tscn"
 
 [node name="MultiplayerButton" type="Button" parent="Control/CenterContainer/VBoxContainer" node_paths=PackedStringArray("menu_container")]
+visible = false
 layout_mode = 2
 text = "Multiplayer"
 script = SubResource("GDScript_1bk6e")
